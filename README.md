@@ -1,4 +1,4 @@
-# **Exate**: uma aplicação para **ex**tração de **a**ssunto de **te**xtos
+# Exate: uma aplicação para extração de assunto de textos
 
 ## Dependências
 - Python 3
