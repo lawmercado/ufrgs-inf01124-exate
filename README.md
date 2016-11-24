@@ -1,26 +1,26 @@
-# Xate: uma aplicação para eXtração de Assunto de TExtos
+# *Exate*: uma aplicação para *ex*tração de *a*ssunto de *te*xtos
 
 ## Dependências
-- Python 3;
-- NLTK 3.
+- Python 3
+- NLTK 3
 
 ## Modo de usar
-A Xate pode ser utilizada como uma aplicação ou como um módulo.
+A Exate pode ser utilizada como uma aplicação ou como um módulo.
 
 ### Como uma aplicação
 Ao executar o seguinte comando:
 ```
-python xate.py
+python exate.py
 ```
 Será carregada uma interface gráfica simples. Basta inserir o texto, clicar no botão "Extrair assunto" e obter o assunto do mesmo.
 
 ### Como um módulo
 ```
-import xate
+import exate
 
 [...]
 
-assunto = xate.extrairAssunto(texto)
+assunto = exate.extrairAssunto(texto)
 ```
 
 ## Licença
