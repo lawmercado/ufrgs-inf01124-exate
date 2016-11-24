@@ -62,7 +62,6 @@ def extrairAssunto(texto):
     
     return assunto
 
-
 if __name__ == '__main__':
     from tkinter import *
     

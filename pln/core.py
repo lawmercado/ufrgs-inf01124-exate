@@ -53,7 +53,7 @@ def pos(tokens):
     :param tokens: Lista de tokens a serem classificados
     :type tokens: list
     
-    :return: Lista de tupla com os tokens juntamente com sua respectiva POS tag
+    :return: Lista de tuplas com os tokens juntamente com sua respectiva POS tag
     :rtype: list
     """    
     
@@ -79,11 +79,34 @@ def obterSubstantivos(tokens):
     return ocorrencias
     
 def obterSinonimos(token):
+    """
+    Obtém a lista de  sinônimos de um dado token
+    
+    :param token: Token a ter seus sinônimos obtidos
+    :type tokens: string
+    
+    :return: Lista com os sinônimos
+    :rtype: list
+    """
+    
     return pln.sinonimo.obterSinonimos(token)
     
 def obterSinonimosNaLista(tokens):
     """
+    A partir de uma lista de tokens, associa cada item (na ordem de chegada)
+    aos seus sinônimos presentes na mesma lista
+    
+    A lista é filtrada, sendo que:
+        - Ou um item aparece como um sinônimo de algum outro item;
+        - Ou aparece como o "outro item".
+    
+    :param tokens: Lista de tokens
+    :type tokens: list
+    
+    :return: Lista de tuplas, relacionado um item aos seus sinônimos presentes na lista
+    :rtype: list
     """
+    
     blacklist = []
     relacoes = []
     
@@ -92,9 +115,7 @@ def obterSinonimosNaLista(tokens):
             relacao = (token, [])
             blacklist.append(token)
             
-            sinonimos = obterSinonimos(token)            
-            
-            print(sinonimos)            
+            sinonimos = obterSinonimos(token)       
             
             for sinonimo in sinonimos:
                 if sinonimo in tokens and sinonimo not in blacklist:

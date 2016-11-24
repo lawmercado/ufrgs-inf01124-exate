@@ -9,15 +9,30 @@
 Módulo da unidade de processamento de linguagem natural (PLN) para treinamento
 e obtenção de um POS tagger
 
+Ao ser executado como um script, treina um tagger a partir dos corpus da língua
+portuguesa Floresta e Mac_Morpho, salvando o mesmo em um arquivo de dump (i.e.
+em ./dump_tagger.pkl)
+
 """
 
 import nltk
 from pickle import dump, load
+import os
 
 _tagger = None
-CAMINHO_DUMP = 'dump_tagger.pkl'
+CAMINHO_DUMP = os.path.dirname(os.path.realpath(__file__)) + '/dump_tagger.pkl'
 
 def simplificarTag(t):
+    """
+    Normaliza a tag dos diversos corpus para um padrão único
+    
+    :param token: Tag a ser normalizada
+    :type tokens: string
+    
+    :return: Tag normalizada
+    :rtype: string
+    """
+    
     tag = t.lower()
 
     if "+" in tag:
@@ -37,6 +52,16 @@ def simplificarTag(t):
     return tag
 
 def pos(tokens):
+    """
+    Utilizando o tagger disponível, faz o Part-of-speech (POS) tagging
+    
+    :param tokens: Lista de tokens a serem classificados
+    :type tokens: list
+    
+    :return: Lista de tuplas com os tokens juntamente com sua respectiva POS tag
+    :rtype: list
+    """    
+    
     global _tagger
     
     if _tagger is None:
