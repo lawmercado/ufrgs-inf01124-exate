@@ -1,5 +1,4 @@
-# Xate
-Xate: uma aplicação para eXtração de Assunto de TExtos
+# Xate: uma aplicação para eXtração de Assunto de TExtos
 
 ## Dependências
 - Python 3;
