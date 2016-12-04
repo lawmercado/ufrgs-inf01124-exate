@@ -29,12 +29,18 @@ def obterSinonimos(token):
 
     token = unidecode(token)
 
-    r = requests.get('http://www.sinonimos.com.br/' + token)
+    r = requests.get('https://www.dicio.com.br/' + token)
 
-    soup = BeautifulSoup(r.text, "lxml")
-
+    soup = BeautifulSoup(r.text, "html.parser")
+    
+    sinonimos = []    
+    
     try:
-        sinonimos = [a.text for a in soup.findAll(attrs = { 'class': 'sinonimo' })]
+                
+        p = soup.find('p', attrs = { 'class': 'adicional sinonimos' })
+        
+        for a in p.findAll('a'):
+            sinonimos.append(a.text)
 
         return sinonimos
 

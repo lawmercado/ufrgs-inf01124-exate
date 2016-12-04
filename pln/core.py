@@ -15,7 +15,7 @@ import pln.tagger
 import pln.sinonimo
 
 POS_TAG_SUBSTANTIVO = 'n'
-MAPA_PLURAL_SINGULAR = [('ãos', 'ão'), ('ões', 'ão'), ('ães', 'ão'), ('is', 'l'), ('ns', 'm'), ('s', ''), ('es', '')]
+MAPA_PLURAL_SINGULAR = [('ãos', 'ão'), ('ões', 'ão'), ('ães', 'ae'), ('is', 'l'), ('ons', 'on'), ('ns', 'm'), ('zes', 'z'), ('s', '')]
 
 def obterTokens(texto):
     """
@@ -31,7 +31,7 @@ def obterTokens(texto):
 
     return tokens
 
-def stem(token):
+def singularizar(token):
     """
     Simplifica o token da maneira mais atômica possível
 
@@ -114,14 +114,14 @@ def obterSinonimosNaLista(tokens):
         if token not in blacklist:
             relacao = (token, [])
             blacklist.append(token)
-
+            
             sinonimos = obterSinonimos(token)
 
             for sinonimo in sinonimos:
                 if sinonimo in tokens and sinonimo not in blacklist:
                     relacao[1].append(sinonimo)
                     blacklist.append(sinonimo) # Para que não seja considerado novamente
-
+            
             relacoes.append(relacao)
 
     return relacoes
