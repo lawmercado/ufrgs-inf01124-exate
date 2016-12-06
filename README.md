@@ -20,7 +20,7 @@ import exate
 
 [...]
 
-assunto = exate.extrairAssunto(texto)
+assunto = exate.extrairAssunto(texto, considerarSinonimos)
 ```
 
 ## Licença
